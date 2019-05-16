@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.kiquenet.introduceme"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    //App dependencies
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$KOTLIN_VERSION"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //Networking
+    implementation "com.google.code.gson:gson:$GSON_VERSION"
+    implementation "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+
+    //Background
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION"
+
+    //Utils
+    implementation "com.google.dagger:dagger:$DAGGER_VERSION"
+    implementation "com.google.dagger:dagger-android:$DAGGER_VERSION"
+    implementation "com.google.dagger:dagger-android-support:$DAGGER_VERSION"
+    kapt "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+    kapt "com.google.dagger:dagger-android-processor:$DAGGER_VERSION"
+    implementation "com.squareup.picasso:picasso:$PICASSO_VERSION"
+    implementation "com.google.android.material:material:$MATERIAL_VERSION"
+    implementation "androidx.constraintlayout:constraintlayout:$CONSTRAINT_LAYOUT"
+
+
+    testImplementation "junit:junit:$JUNIT_VERSION"
+    androidTestImplementation "androidx.test:runner:$RUNNER_VERSION"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$ESPRESSO_VERSION"
+}
