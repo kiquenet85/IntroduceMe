@@ -5,4 +5,17 @@
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <!--general margins-->
+    <dimen name="small_margin">5dp</dimen>
+    <dimen name="medium_margin">8dp</dimen>
+
+    <!--tool bar-->
+    <dimen name="app_bar_layout_height">192dp</dimen>
+    <dimen name="collapsable_toolbar_margin_end">64dp</dimen>
+    <dimen name="collapsable_toolbar_margin_start">48dp</dimen>
+
+    <dimen name="fragment_category_item_corner_radius">20dp</dimen>
+    <dimen name="fragment_top_apps_item_corner_radius">20dp</dimen>
+
 </resources>

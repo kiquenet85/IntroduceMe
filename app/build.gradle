@@ -29,14 +29,19 @@ dependencies {
     //App dependencies
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$KOTLIN_VERSION"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.appcompat:appcompat:$ANDROID_X_VERSION"
+    implementation "androidx.core:core-ktx:$ANDROID_X_VERSION"
+    implementation "androidx.legacy:legacy-support-v4:$ANDROID_X_LEGACY_SUPPORT_VERSION"
+
+    //Design
+    implementation "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
 
     //Networking
     implementation "com.google.code.gson:gson:$GSON_VERSION"
     implementation "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
     implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$COROUTINES_ADAPTER_VERSION"
+
 
     //Background
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION"

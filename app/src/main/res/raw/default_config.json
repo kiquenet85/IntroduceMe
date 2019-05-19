@@ -1,0 +1,10 @@
+{
+  "baseUrl": "https://www.introduceme.com",
+  "defaultCathegoryAppsLimit": 20,
+  "log": {
+    "level": 2
+  },
+  "serviceTimeout": 30,
+  "connectionTimeout": 20,
+  "lastModified": "2016-04-07T19:56:51.074Z"
+}
