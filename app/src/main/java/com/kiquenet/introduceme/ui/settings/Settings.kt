@@ -13,11 +13,11 @@ class Settings {
     var baseUrl: String? = null
 
     /**
-     * Get default service timeout.
+     * Get default service timeout SECONDS.
      */
     var serviceTimeOut: Int = 60
     /**
-     * Get default connection timeout.
+     * Get default connection timeout SECONDS.
      */
     var connectionTimeOut: Int = 30
 

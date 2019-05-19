@@ -31,7 +31,7 @@ interface ApplicationComponent {
     @get:ApplicationContext
     val appContext: Context
 
-    //Presenter Component
+    //Repository
 
 
     //Interactor

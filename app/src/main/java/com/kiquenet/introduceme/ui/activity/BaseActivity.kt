@@ -76,7 +76,7 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     protected fun navigateToFragment(
-        containerId: Int, fragment: Fragment, tag: String, addToBackStack: Boolean,
+        containerId: Int = R.id.fragment_container, fragment: Fragment, tag: String, addToBackStack: Boolean = false,
         animation: CustomAnimations?
     ): Int {
         val transaction = supportFragmentManager.beginTransaction()
@@ -87,7 +87,6 @@ open class BaseActivity : AppCompatActivity() {
             transaction.addToBackStack(tag)
         }
         // use commitAllowingStateLoss per Support Library bug: https://code.google.com/p/android/issues/detail?id=19917
-        // (TODO once I get rid of support lib I can remove this)
         return transaction.replace(containerId, fragment, tag).commitAllowingStateLoss()
     }
 

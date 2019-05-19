@@ -1,4 +1,4 @@
-package com.kiquenet.introduceme.ui.di.scope;
+package com.kiquenet.introduceme.ui.di.scope
 
 /**
  * A scoping annotation to permit objects whose lifetime should
@@ -7,11 +7,10 @@ package com.kiquenet.introduceme.ui.di.scope;
  * @author n.diazgranados
  */
 
-import javax.inject.Scope;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Retention
+import java.lang.annotation.RetentionPolicy
+import javax.inject.Scope
 
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-public @interface PerActivity {
-}
+annotation class PerActivity

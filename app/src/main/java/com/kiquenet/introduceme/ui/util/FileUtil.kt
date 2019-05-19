@@ -27,7 +27,6 @@ object FileUtil {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
     }
 
     @Throws(IOException::class)
