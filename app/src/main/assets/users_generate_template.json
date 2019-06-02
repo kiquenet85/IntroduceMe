@@ -1,0 +1,60 @@
+//https://next.json-generator.com
+[
+  {
+    'repeat(10)': {
+      _id: '{{integer()}}',
+      isActive: '{{bool()}}',
+      picture: 'http://placehold.it/32x32',
+      age: '{{integer(20, 40)}}',
+      name: {
+        first: '{{firstName()}}',
+        last: '{{surname()}}'
+      },
+      company: '{{company().toUpperCase()}}',
+      email(tags) {
+  return `${this.name.first}.${this.name.last}@${this.company}${tags.domainZone()}`.toLowerCase();
+},
+  phone: '+1 {{phone()}}',
+  address: '{{integer(100, 999)}} {{street()}}, {{city()}}, {{state()}}, {{integer(100, 10000)}}',
+  about: '{{lorem(1, "paragraphs")}}',
+  registered: '{{moment(this.date(new Date(2014, 0, 1), new Date())).format("LLLL")}}',
+  latitude: '{{floating(-90.000001, 90)}}',
+  longitude: '{{floating(-180.000001, 180)}}',
+  academia: [
+  {
+    'repeat(5)': {
+      name: '{{random("Javeriana", "Standford", "MIT", "Coloumbia", "Arizona College")}}',
+      degree: '{{random("College", "Graduated", "Doctor", "Undergratuated")}}',
+    }
+  }
+],
+  workExperience: [
+  {
+    'repeat(1, 4)': {
+      name: '{{company().toUpperCase()}}',
+      startDate: '{{moment(this.date(new Date(2000, 0, 1), new Date(2014, 0, 1))).format("LLLL")}}',
+      endDate: '{{moment(this.date(new Date(2014, 0, 1), new Date())).format("LLLL")}}',
+      duties: '{{lorem(this.integer(1,2),"paragraphs")}}'
+    }
+  }
+],
+  courses: [
+  {
+    'repeat(1, 4)': {
+      name: '{{company().toUpperCase()}}',
+      startDate: '{{moment(this.date(new Date(2005, 0, 1),new Date(2010, 0, 1))).format("LLLL")}}',
+      endDate: '{{moment(this.date(new Date(2010, 0, 1), new Date())).format("LLLL")}}',
+      certification: '{{lorem(this.integer(1),"sentences")}}'
+    }
+  }
+],
+  greeting(tags) {
+  return `Hello, ${this.name.first}! You have ${tags.integer(5, 10)} unread messages.`;
+},
+  favoriteFruit(tags) {
+  const fruits = ['apple', 'banana', 'strawberry'];
+  return fruits[tags.integer(0, fruits.length - 1)];
+}
+}
+}
+]

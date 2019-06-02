@@ -7,6 +7,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
+    testOptions.unitTests.includeAndroidResources = true
+
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.kiquenet.introduceme"
@@ -28,36 +30,47 @@ dependencies {
 
     //App dependencies
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$KOTLIN_VERSION"
-    implementation "androidx.appcompat:appcompat:$ANDROID_X_VERSION"
-    implementation "androidx.core:core-ktx:$ANDROID_X_VERSION"
-    implementation "androidx.legacy:legacy-support-v4:$ANDROID_X_LEGACY_SUPPORT_VERSION"
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.KOTLIN_VERSION"
+    implementation "androidx.appcompat:appcompat:$rootProject.ANDROID_X_VERSION"
+    implementation "androidx.core:core-ktx:$rootProject.ANDROID_X_VERSION"
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.ANDROID_X_LEGACY_SUPPORT_VERSION"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.ANDROID_X_LIFECYCLE_VERSION"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.ANDROID_X_LIFECYCLE_VERSION"
+    implementation "androidx.fragment:fragment-ktx:$rootProject.ANDROID_X_FRAGMENT_VERSION"
 
     //Design
-    implementation "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
+    implementation "com.android.support:design:$rootProject.SUPPORT_LIBRARY_VERSION"
 
     //Networking
-    implementation "com.google.code.gson:gson:$GSON_VERSION"
-    implementation "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
-    implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
-    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$COROUTINES_ADAPTER_VERSION"
-
+    implementation "com.google.code.gson:gson:$rootProject.GSON_VERSION"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.RETROFIT_VERSION"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.RETROFIT_VERSION"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$rootProject.COROUTINES_ADAPTER_VERSION"
 
     //Background
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.COROUTINES_VERSION"
+    implementation "androidx.work:work-runtime-ktx:$rootProject.WORK_VERSION"
 
     //Utils
-    implementation "com.google.dagger:dagger:$DAGGER_VERSION"
-    implementation "com.google.dagger:dagger-android:$DAGGER_VERSION"
-    implementation "com.google.dagger:dagger-android-support:$DAGGER_VERSION"
-    kapt "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
-    kapt "com.google.dagger:dagger-android-processor:$DAGGER_VERSION"
-    implementation "com.squareup.picasso:picasso:$PICASSO_VERSION"
-    implementation "com.google.android.material:material:$MATERIAL_VERSION"
-    implementation "androidx.constraintlayout:constraintlayout:$CONSTRAINT_LAYOUT"
+    implementation "com.google.dagger:dagger:$rootProject.DAGGER_VERSION"
+    implementation "com.google.dagger:dagger-android:$rootProject.DAGGER_VERSION"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.DAGGER_VERSION"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.DAGGER_VERSION"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.DAGGER_VERSION"
+    implementation "com.squareup.picasso:picasso:$rootProject.PICASSO_VERSION"
+    implementation "com.google.android.material:material:$rootProject.MATERIAL_VERSION"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.CONSTRAINT_LAYOUT"
 
+    //DATABASE
+    implementation "androidx.room:room-ktx:$rootProject.ROOM_VERSION"
+    kapt "androidx.room:room-compiler:$rootProject.ROOM_VERSION"
 
-    testImplementation "junit:junit:$JUNIT_VERSION"
-    androidTestImplementation "androidx.test:runner:$RUNNER_VERSION"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$ESPRESSO_VERSION"
+    testImplementation "junit:junit:$rootProject.JUNIT_VERSION"
+    testImplementation "org.robolectric:robolectric:$ROBO_ELECTRIC_VERSION"
+    testImplementation "io.mockk:mockk:$MOCKITOK_VERSION"
+    testImplementation "androidx.room:room-testing:$rootProject.ROOM_VERSION"
+    androidTestImplementation "androidx.test:runner:$rootProject.RUNNER_VERSION"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ESPRESSO_VERSION"
+    // Core library
+    androidTestImplementation 'androidx.test:core:1.0.0'
 }
