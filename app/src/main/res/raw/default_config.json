@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://www.introduceme.com",
+  "baseUrl": "https://api.github.com",
   "defaultCathegoryAppsLimit": 20,
   "log": {
     "level": 2

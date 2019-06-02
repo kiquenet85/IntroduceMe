@@ -9,15 +9,16 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.kiquenet.introduceme.IntroduceMeApp
 import com.kiquenet.introduceme.R
-import com.kiquenet.introduceme.ui.IntroduceMeApp
-import com.kiquenet.introduceme.ui.di.component.ActivityComponent
-import com.kiquenet.introduceme.ui.di.component.ApplicationComponent
-import com.kiquenet.introduceme.ui.di.component.DaggerActivityComponent
-import com.kiquenet.introduceme.ui.di.module.Activity.ActivityModule
-import com.kiquenet.introduceme.ui.network.NetworkManager
-import com.kiquenet.introduceme.ui.network.WifiReceiver
+import com.kiquenet.introduceme.di.component.ActivityComponent
+import com.kiquenet.introduceme.di.component.ApplicationComponent
+import com.kiquenet.introduceme.di.component.DaggerActivityComponent
+import com.kiquenet.introduceme.di.module.Activity.ActivityModule
+import com.kiquenet.introduceme.network.NetworkManager
+import com.kiquenet.introduceme.network.WifiReceiver
 import java.io.Serializable
+import java.lang.ref.WeakReference
 import javax.inject.Inject
 
 /**
@@ -32,20 +33,28 @@ open class BaseActivity : AppCompatActivity() {
 
     private var activityComponent: ActivityComponent? = null
     private var applicationComponent: ApplicationComponent? = null
-    protected var activeConnection: MenuItem? = null
-    lateinit private var currentActivity: Activity
-    lateinit private var currentContext: Context
     lateinit protected var wifiReceiver: WifiReceiver
+    lateinit protected var currentContext: WeakReference<Context?>
+    lateinit protected var currentActivity: WeakReference<Activity?>
 
     @Inject
     lateinit protected var networkManager: NetworkManager
 
-    protected fun getLayoutResourceId(): Int = R.layout.base_activity
+    /**
+     * Menu item to identify connection problems
+     */
+    protected var activeConnection: MenuItem? = null
+
+    /**
+     * Overridable function to set layout resource.
+     */
+    open protected fun getLayoutResourceId(): Int = R.layout.base_activity
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         applicationComponent = (application as? IntroduceMeApp)?.appComponent
         applicationComponent?.inject(this)
+        super.onCreate(savedInstanceState)
+
         getActivityComponent()
 
         registerNetworkEvents()
@@ -60,7 +69,6 @@ open class BaseActivity : AppCompatActivity() {
                 onConnectionUpdate(networkConnectionChange.isOnline)
             }
         }
-
         LocalBroadcastManager.getInstance(this).registerReceiver(wifiReceiver, IntentFilter(WIFI_RECEIVER_ACTION))
     }
 
@@ -76,9 +84,10 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     protected fun navigateToFragment(
-        containerId: Int = R.id.fragment_container, fragment: Fragment, tag: String, addToBackStack: Boolean = false,
-        animation: CustomAnimations?
+        fragment: Fragment, containerId: Int = R.id.fragment_container, addToBackStack: Boolean = false,
+        animation: CustomAnimations? = null
     ): Int {
+        val tag = fragment::class.java.simpleName
         val transaction = supportFragmentManager.beginTransaction()
         if (animation != null) {
             transaction.setCustomAnimations(animation.enter, animation.exit, animation.popEnter, animation.popExit)
@@ -93,11 +102,11 @@ open class BaseActivity : AppCompatActivity() {
     fun getActivityComponent(): ActivityComponent? {
         if (activityComponent == null) {
             activityComponent = DaggerActivityComponent.builder()
-                .activityModule(ActivityModule(this))
+                .activityModule(ActivityModule(WeakReference(this)))
                 .applicationComponent(applicationComponent).build()
 
-            currentActivity = activityComponent!!.activity
-            currentContext = activityComponent!!.context
+            currentContext = activityComponent!!.getContext()
+            currentActivity = activityComponent!!.getActivity()
         }
         return activityComponent
     }
