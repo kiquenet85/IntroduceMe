@@ -7,10 +7,15 @@ import androidx.lifecycle.MediatorLiveData
 import com.kiquenet.introduceme.data.UserRepository
 import com.kiquenet.introduceme.di.scope.ApplicationContext
 import com.kiquenet.introduceme.util.combineAndCompute
+import com.kiquenet.introduceme.util.getDistinct
 import kotlinx.coroutines.*
 import java.util.*
 import javax.inject.Inject
 
+/**
+ * @author n.diazgranados
+ * Defining interactors for specific use cases.
+ */
 class UserInfoInteractor @Inject constructor(
     @ApplicationContext val appContext: Context,
     val userRepository: UserRepository
@@ -27,10 +32,10 @@ class UserInfoInteractor @Inject constructor(
      */
     suspend fun getUserInfo(id: Long) = withContext(Dispatchers.IO) {
 
-        val userJob = async { userRepository.getUser(id) }
-        val userCoursesJob = async { userRepository.getUserCourses(id) }
-        val userWorkExperienceJob = async { userRepository.getUserWorkExperience(id) }
-        val userEducationJob = async { userRepository.getUserEducation(id) }
+        val userJob = async { userRepository.getUser(id).getDistinct() }
+        val userCoursesJob = async { userRepository.getUserCourses(id).getDistinct() }
+        val userWorkExperienceJob = async { userRepository.getUserWorkExperience(id).getDistinct() }
+        val userEducationJob = async { userRepository.getUserEducation(id).getDistinct() }
 
         withContext(Dispatchers.Main) {
             val liveDataList = listOf<LiveData<*>>(
