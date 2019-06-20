@@ -5,16 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.kiquenet.introduceme.feature.profile.adapter.ProfileAdapter
 import com.kiquenet.introduceme.R
-import com.kiquenet.introduceme.domain.UserInformationUseCase.UserInfoUi
-import com.kiquenet.introduceme.view_models.UserInfoViewModel
+import com.kiquenet.introduceme.common.sticky_header.PinnedHeaderItemDecoration
+import com.kiquenet.introduceme.util.androidLazy
+import com.kiquenet.introduceme.feature.profile.view_model.UserInfoViewModel
 import com.kiquenet.introduceme.view_models.factory.ViewModelFactory
+import kotlinx.android.synthetic.main.frag_profile.*
 import javax.inject.Inject
-
 
 /**
  * Fragment to show profile of the user.
@@ -22,25 +22,22 @@ import javax.inject.Inject
  */
 class ProfileFragment : BaseFragment() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
-
-    private lateinit var text: TextView
-
     companion object {
         fun newInstance() = ProfileFragment()
     }
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    private val cvAdapter by androidLazy {
+        ProfileAdapter(
+            viewLifecycleOwner,
+            userInfoViewModel.userInfo
+        )
+    }
+
     //private val userInfoViewModel: UserInfoViewModel by viewModels()
     private lateinit var userInfoViewModel: UserInfoViewModel
-
-    private val userInfoObserver = Observer<UserInfoUi> { newValue ->
-        newValue?.let{
-
-            Toast.makeText(appComponent.getAppContext(), "value: ${newValue}", Toast.LENGTH_LONG).show()
-            text.setText("value: ${newValue}")
-        }
-    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -49,15 +46,23 @@ class ProfileFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootFrag = inflater.inflate(R.layout.frag_profile, container, false)
-        text = rootFrag.findViewById(R.id.frag_profile_text)
         return rootFrag
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         userInfoViewModel = ViewModelProviders.of(this, viewModelFactory).get(UserInfoViewModel::class.java)
-        userInfoViewModel.userInfo.observe(viewLifecycleOwner, userInfoObserver)
-        userInfoViewModel.getUserInfo(9L)
+
+        frag_profile_sections.apply {
+            setHasFixedSize(true)
+            val linearLayout = LinearLayoutManager(context)
+            layoutManager = linearLayout
+            setHasFixedSize(true)
+            adapter = cvAdapter
+            frag_profile_sections.addItemDecoration(PinnedHeaderItemDecoration())
+            setItemViewCacheSize(20)
+        }
+
+        userInfoViewModel.getUserInfo(6L)
     }
 }
