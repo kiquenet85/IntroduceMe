@@ -3,9 +3,9 @@ package com.kiquenet.introduceme.data
 import android.util.Log
 import com.kiquenet.introduceme.data.db.AppDatabase
 import com.kiquenet.introduceme.data.remote.apis.IntroduceMeApi
-import com.kiquenet.introduceme.domain.UserInformationUseCase.UserInfoUi
+import com.kiquenet.introduceme.feature.profile.UserInformationUseCase.UserInfoUi
 import com.kiquenet.introduceme.network.NetworkManager
-import com.kiquenet.introduceme.view_models.model.User
+import com.kiquenet.introduceme.common.view_models.model.User
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.coroutineScope
@@ -78,26 +78,26 @@ class UserRepository @Inject constructor(
 
         if (userInfoUi != null && userInfoUi.user != null) {
 
-            val safeUSer = userInfoUi.user!!
+            val safeUser = userInfoUi.user!!
 
             with(userInfoUi) {
                 user?.id?.let {
-                    appDatabase.userDao().insertUser(safeUSer)
+                    appDatabase.userDao().insertUser(safeUser)
                     courses?.let {
                         if (!it.isEmpty()) {
-                            it.forEach { it.user_id = safeUSer.id }
+                            it.forEach { it.user_id = safeUser.id }
                             appDatabase.userDao().insertAllUserCourses(it)
                         }
                     }
                     academia?.let {
                         if (!it.isEmpty()) {
-                            it.forEach { it.user_id = safeUSer.id }
+                            it.forEach { it.user_id = safeUser.id }
                             appDatabase.userDao().insertAllUserEducation(it)
                         }
                     }
                     workExperience?.let {
                         if (!it.isEmpty()) {
-                            it.forEach { it.user_id = safeUSer.id }
+                            it.forEach { it.user_id = safeUser.id }
                             appDatabase.userDao().insertAllUserWorkExperience(it)
                         }
                     }

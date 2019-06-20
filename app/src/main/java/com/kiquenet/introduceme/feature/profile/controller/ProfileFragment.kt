@@ -1,4 +1,4 @@
-package com.kiquenet.introduceme.ui.fragments
+package com.kiquenet.introduceme.feature.profile.controller
 
 import android.content.Context
 import android.os.Bundle
@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kiquenet.introduceme.feature.profile.adapter.ProfileAdapter
 import com.kiquenet.introduceme.R
+import com.kiquenet.introduceme.common.controller.fragments.BaseFragment
 import com.kiquenet.introduceme.common.sticky_header.PinnedHeaderItemDecoration
-import com.kiquenet.introduceme.util.androidLazy
+import com.kiquenet.introduceme.common.view_models.factory.ViewModelFactory
+import com.kiquenet.introduceme.feature.profile.adapter.ProfileAdapter
 import com.kiquenet.introduceme.feature.profile.view_model.UserInfoViewModel
-import com.kiquenet.introduceme.view_models.factory.ViewModelFactory
+import com.kiquenet.introduceme.util.androidLazy
 import kotlinx.android.synthetic.main.frag_profile.*
 import javax.inject.Inject
 
@@ -63,6 +64,7 @@ class ProfileFragment : BaseFragment() {
             setItemViewCacheSize(20)
         }
 
+        //TODO Create login screen and change this burden value.
         userInfoViewModel.getUserInfo(6L)
     }
 }

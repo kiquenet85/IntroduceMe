@@ -1,4 +1,4 @@
-package com.kiquenet.introduceme.domain.UserInformationUseCase
+package com.kiquenet.introduceme.feature.profile.UserInformationUseCase
 
 import android.content.Context
 import com.google.gson.Gson
@@ -8,7 +8,7 @@ import com.google.gson.JsonElement
 import com.google.gson.reflect.TypeToken
 import com.kiquenet.introduceme.IntroduceMeApp
 import com.kiquenet.introduceme.di.scope.ApplicationContext
-import com.kiquenet.introduceme.view_models.model.*
+import com.kiquenet.introduceme.common.view_models.model.*
 import java.lang.reflect.Type
 import javax.inject.Inject
 

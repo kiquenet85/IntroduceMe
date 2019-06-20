@@ -1,4 +1,4 @@
-package com.kiquenet.introduceme.view_models.model
+package com.kiquenet.introduceme.common.view_models.model
 
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo

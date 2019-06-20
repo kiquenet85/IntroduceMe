@@ -1,4 +1,4 @@
-package com.kiquenet.introduceme.view_models.model
+package com.kiquenet.introduceme.common.view_models.model
 
 import androidx.annotation.NonNull
 import androidx.room.Entity
@@ -15,10 +15,11 @@ import androidx.room.PrimaryKey
         parentColumns = ["id"],
         childColumns = ["user_id"]
     )],
-    indices = [Index("user_id")]
+    indices = [Index(value = ["user_id", "id"], unique = true)]
 )
 data class Course(
-    @PrimaryKey @NonNull var user_id: Long,
+    @PrimaryKey(autoGenerate = true) @NonNull var id: Long,
+    @NonNull var user_id: Long,
     var name: String,
     var startDate: String,
     var endDate: String,

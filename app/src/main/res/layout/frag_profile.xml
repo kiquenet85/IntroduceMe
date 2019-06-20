@@ -1,27 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-                                            xmlns:tools="http://schemas.android.com/tools"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:fillViewport="true">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-
-    <RelativeLayout
+    <androidx.recyclerview.widget.RecyclerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/frag_profile_sections"
+            android:background="@android:color/background_light"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center">
+            android:layout_height="match_parent"/>
 
-        <TextView
-                android:id="@+id/frag_profile_text"
-                style="@style/Base.TextAppearance.AppCompat.Body1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:gravity="center"
-                android:scrollbars="vertical"
-                android:text="message from the service"/>
-    </RelativeLayout>
+</LinearLayout>
 
-
-</androidx.core.widget.NestedScrollView>

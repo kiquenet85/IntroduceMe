@@ -11,7 +11,7 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.kiquenet.introduceme.data.db.dao.UserDao
 import com.kiquenet.introduceme.util.DATABASE_NAME
-import com.kiquenet.introduceme.view_models.model.*
+import com.kiquenet.introduceme.common.view_models.model.*
 
 /**
  * The Room database for this app

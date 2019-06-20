@@ -1,4 +1,4 @@
-package com.droidcba.kedditbysteps.features.news.adapter
+package com.kiquenet.introduceme.feature.profile.adapter
 
 import android.util.Log
 import android.view.ViewGroup
@@ -54,9 +54,15 @@ class ProfileAdapter
     init {
         delegateAdapters.put(loadingItem.getViewType(), LoadingDelegateAdapter())
         delegateAdapters.put(headerItem.getViewType(), HeaderDelegateAdapter())
-        delegateAdapters.put(AdapterViewType.WORK_EXPERIENCE, WorkExperienceDelegateAdapter())
-        delegateAdapters.put(AdapterViewType.ACADEMIUM, AcademiumDelegateAdapter())
-        delegateAdapters.put(AdapterViewType.COURSES, CourseDelegateAdapter())
+        delegateAdapters.put(AdapterViewType.WORK_EXPERIENCE,
+            WorkExperienceDelegateAdapter()
+        )
+        delegateAdapters.put(AdapterViewType.ACADEMIUM,
+            AcademiumDelegateAdapter()
+        )
+        delegateAdapters.put(AdapterViewType.COURSES,
+            CourseDelegateAdapter()
+        )
         items = ArrayList()
         showLoading()
 

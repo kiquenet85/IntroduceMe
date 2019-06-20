@@ -1,9 +1,11 @@
 package com.kiquenet.introduceme.di.module
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
-import com.kiquenet.introduceme.domain.UserInformationUseCase.UserInfoInteractor
-import com.kiquenet.introduceme.view_models.UserInfoViewModel
-import com.kiquenet.introduceme.view_models.factory.ViewModelFactory
+import com.kiquenet.introduceme.di.scope.ApplicationContext
+import com.kiquenet.introduceme.feature.profile.UserInformationUseCase.UserInfoInteractor
+import com.kiquenet.introduceme.feature.profile.view_model.UserInfoViewModel
+import com.kiquenet.introduceme.common.view_models.factory.ViewModelFactory
 import dagger.MapKey
 import dagger.Module
 import dagger.Provides
@@ -15,7 +17,7 @@ import kotlin.reflect.KClass
 
 /**
  * @author n.diazgranados
- * Module usinig [ViewModelFactory] to be able to iniject other objects in View models.
+ * Module using [ViewModelFactory] to be able to inject other objects in View models.
  *
  *  //https://www.techyourchance.com/dependency-injection-viewmodel-with-dagger-2/
  */ //https://azabost.com/injectable-android-viewmodels/
@@ -36,7 +38,7 @@ class ViewModelModule {
     @Provides
     @IntoMap
     @ViewModelKey(UserInfoViewModel::class)
-    fun provideUserInfoViewModel(userInfoInteractor: UserInfoInteractor): ViewModel {
-        return UserInfoViewModel(userInfoInteractor)
+    fun provideUserInfoViewModel(@ApplicationContext appContext: Context, userInfoInteractor: UserInfoInteractor): ViewModel {
+        return UserInfoViewModel(appContext, userInfoInteractor)
     }
 }

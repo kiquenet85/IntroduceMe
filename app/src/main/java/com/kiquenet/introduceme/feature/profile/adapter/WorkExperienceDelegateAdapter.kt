@@ -1,4 +1,4 @@
-package com.kiquenet.introduceme.common.adapter.delegate
+package com.kiquenet.introduceme.feature.profile.adapter
 
 import android.os.Build
 import android.view.ViewGroup
@@ -10,7 +10,7 @@ import com.kiquenet.introduceme.R
 import com.kiquenet.introduceme.util.EMPTY_STRING
 import com.kiquenet.introduceme.util.applyJustificationOnText
 import com.kiquenet.introduceme.util.inflate
-import com.kiquenet.introduceme.view_models.model.WorkExperience
+import com.kiquenet.introduceme.common.view_models.model.WorkExperience
 import kotlinx.android.synthetic.main.delegate_item_work_exp.view.*
 import java.util.*
 

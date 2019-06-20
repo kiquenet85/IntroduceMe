@@ -1,6 +1,6 @@
 package com.kiquenet.introduceme.data.remote.apis
 
-import com.kiquenet.introduceme.domain.UserInformationUseCase.UserInfoUi
+import com.kiquenet.introduceme.feature.profile.UserInformationUseCase.UserInfoUi
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Path

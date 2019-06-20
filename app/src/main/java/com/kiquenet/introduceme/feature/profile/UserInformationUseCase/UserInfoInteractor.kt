@@ -1,4 +1,4 @@
-package com.kiquenet.introduceme.domain.UserInformationUseCase
+package com.kiquenet.introduceme.feature.profile.UserInformationUseCase
 
 import android.content.Context
 import android.util.Log
@@ -15,6 +15,7 @@ import javax.inject.Inject
 /**
  * @author n.diazgranados
  * Defining interactors for specific use cases.
+ * User information interactor brings all profile user information.
  */
 class UserInfoInteractor @Inject constructor(
     @ApplicationContext val appContext: Context,

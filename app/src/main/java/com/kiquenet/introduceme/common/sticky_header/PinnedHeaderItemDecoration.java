@@ -1,4 +1,4 @@
-package com.kiquenet.introduceme.common.adapter;
+package com.kiquenet.introduceme.common.sticky_header;
 
 /**
  * Originally created by Copyright 2014 HIDAKA Takahiro takahr@gmail.com
@@ -49,6 +49,7 @@ public class PinnedHeaderItemDecoration extends RecyclerView.ItemDecoration {
     private int mAlpha = 120;
     private Rect mShadowRect = new Rect();
     private int mShadowSize = 25;
+    private int headerSize = 0;
 
     /*
     Used to end the gradient before the bottom of the rectangle to draw.
@@ -66,6 +67,9 @@ public class PinnedHeaderItemDecoration extends RecyclerView.ItemDecoration {
             //TODO support only vertical header currently.
             final int headerEndAt = mPinnedHeaderView.getTop() + mPinnedHeaderView.getHeight();
             final View v = parent.findChildViewUnder(c.getWidth() / 2, headerEndAt);
+            if(headerSize == 0) {
+                headerSize = parent.getChildAt(0).getHeight();
+            }
 
             if (isHeaderView(parent, v)) {
                 mPinnedHeaderTop = v.getTop() - mPinnedHeaderView.getHeight();
@@ -92,9 +96,11 @@ public class PinnedHeaderItemDecoration extends RecyclerView.ItemDecoration {
 
             if (mShadowSize > 0) drawShadow(c, parent);
 
-            mClipBounds.top = 0;
+            //mClipBounds.top = 0;
+            mClipBounds.bottom = headerSize;
             c.clipRect(mClipBounds);
-            c.translate(0, mPinnedHeaderTop);
+            //c.translate(0, mPinnedHeaderTop);
+            c.drawColor(mPinnedHeaderView.getContext().getResources().getColor(android.R.color.background_light));
             mPinnedHeaderView.draw(c);
 
             c.restore();

@@ -1,4 +1,4 @@
-package com.kiquenet.introduceme.view_models.model
+package com.kiquenet.introduceme.common.view_models.model
 
 import androidx.annotation.NonNull
 import androidx.room.Entity
@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey
 @Entity(
     tableName = "userNames",
     foreignKeys = [androidx.room.ForeignKey(
-        entity = com.kiquenet.introduceme.view_models.model.User::class,
+        entity = com.kiquenet.introduceme.common.view_models.model.User::class,
         parentColumns = ["id"],
         childColumns = ["name_id"]
     )],
