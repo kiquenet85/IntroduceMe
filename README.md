@@ -11,26 +11,68 @@ We will use this dependencies on app:
 
 # Dependencies:
 
-    //KOTLIN
-    ext.KOTLIN_VERSION = '1.3.21'
+        //APP
+        SUPPORT_LIBRARY_VERSION = "28.0.3"
+        ANDROID_X_VERSION = "1.0.2"
+        ANDROID_X_LEGACY_SUPPORT_VERSION = "1.0.0"
+        ANDROID_X_LIFECYCLE_VERSION = "2.2.0-alpha01"
+        ANDROID_X_FRAGMENT_VERSION = "1.1.0-alpha09"
 
-    //Networking
-    ext.RETROFIT_VERSION = '2.5.0'
-    ext.GSON_VERSION = '2.8.5'
+        //KOTLIN
+        KOTLIN_VERSION = '1.3.31'
 
-    //BACKGROUND
-    ext.COROUTINES_VERSION = '1.1.1'
+        //Networking
+        RETROFIT_VERSION = '2.5.0'
+        GSON_VERSION = '2.8.5'
 
-    //Utils
-    ext.DAGGER_VERSION = '2.22.1'
-    ext.PICASSO_VERSION = '2.71828'
-    ext.MATERIAL_VERSION = '1.0.0'
-    ext.CONSTRAINT_LAYOUT = '1.1.3'
+        //BACKGROUND
+        COROUTINES_VERSION = '1.1.1'
+        COROUTINES_ADAPTER_VERSION = '0.9.2'
+        WORK_VERSION = '2.1.0-alpha02'
 
-    //TEST
-    ext.JUNIT_VERSION = '4.12'
-    ext.MOCKITO_VERSION = '2.27.4'
-    ext.ESPRESSO_VERSION = '3.1.1'
-    ext.ROBO_ELECTRIC = '4.0'
-    ext.RUNNER_VERSION = '1.1.1'
+        //ROOM
+        ROOM_VERSION = '2.1.0-beta01'
 
+        //Utils
+        DAGGER_VERSION = '2.22.1'
+        PICASSO_VERSION = '2.71828'
+        MATERIAL_VERSION = '1.0.0'
+        CONSTRAINT_LAYOUT = '1.1.3'
+
+        //TEST
+        JUNIT_VERSION = '4.12'
+        MOCKITOK_VERSION = '1.9.3'
+        ESPRESSO_VERSION = '3.1.1'
+        ROBO_ELECTRIC_VERSION = '4.2'
+        RUNNER_VERSION = '1.1.1'
+        TEST_CORE = '1.0.0'
+
+# The current behavior of the app is just showing some mocking data.
+
+The Flow is basically relying on DB information, but at the same time getting info from a service and updating accordingly when some important information of the user has an update.
+
+# About Architechture:
+
+- Layers:
+a. DATA
+b. Use cases (interactors)
+b. View Models can use one or more interactors.
+d. Controllers use ViewModels.
+
+- Object Dependencies
+We are using dagger to provide different instantiation of objects.
+We have two scopes:
+1. Activity. (Just showing how to manage custom scope)
+2. AppContext.
+
+- Background operatios are using Coroutines.
+
+- Network
+We rely on coroutines adapter and Retrofit to make call to services.
+
+- We are using some Jetpack components.
+LiveData, Room.
+
+# Current simple behavior.
+
+![](IntroduceMe.gif)
