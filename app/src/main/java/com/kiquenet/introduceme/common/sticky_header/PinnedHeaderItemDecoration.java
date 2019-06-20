@@ -1,5 +1,6 @@
 package com.kiquenet.introduceme.common.sticky_header;
 
+
 /**
  * Originally created by Copyright 2014 HIDAKA Takahiro takahr@gmail.com
  * Originally taken from project pinned-section-item-decoration
@@ -67,6 +68,7 @@ public class PinnedHeaderItemDecoration extends RecyclerView.ItemDecoration {
             //TODO support only vertical header currently.
             final int headerEndAt = mPinnedHeaderView.getTop() + mPinnedHeaderView.getHeight();
             final View v = parent.findChildViewUnder(c.getWidth() / 2, headerEndAt);
+
             if(headerSize == 0) {
                 headerSize = parent.getChildAt(0).getHeight();
             }

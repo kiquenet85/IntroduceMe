@@ -7,13 +7,13 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.droidcba.kedditbysteps.commons.adapter.AdapterViewType
 import com.kiquenet.introduceme.R
-import com.kiquenet.introduceme.feature.profile.adapter.AcademiumItem
-import com.kiquenet.introduceme.feature.profile.adapter.CourseItem
 import com.kiquenet.introduceme.common.adapter.delegate.HeaderItem
-import com.kiquenet.introduceme.feature.profile.adapter.WorkExperienceItem
 import com.kiquenet.introduceme.di.scope.ApplicationContext
 import com.kiquenet.introduceme.feature.profile.UserInformationUseCase.UserInfoInteractor
 import com.kiquenet.introduceme.feature.profile.UserInformationUseCase.UserInfoUi
+import com.kiquenet.introduceme.feature.profile.adapter.AcademiumItem
+import com.kiquenet.introduceme.feature.profile.adapter.CourseItem
+import com.kiquenet.introduceme.feature.profile.adapter.WorkExperienceItem
 import com.kiquenet.introduceme.util.getDistinct
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel
@@ -46,21 +46,13 @@ class UserInfoViewModel @Inject constructor(
                 AdapterViewType.WORK_EXPERIENCE,
                 HeaderItem(appContext.getString(R.string.profile_adapter_header_work_exp))
             )
-            workExperienceItems = (userInfoUi.workExperience)?.map {
-                WorkExperienceItem(
-                    it
-                )
-            }
+            workExperienceItems = (userInfoUi.workExperience)?.map { WorkExperienceItem(it) }
 
             headers.put(
                 AdapterViewType.ACADEMIUM,
                 HeaderItem(appContext.getString(R.string.profile_adapter_header_academy))
             )
-            academiumItems = (userInfoUi.academia)?.map {
-                AcademiumItem(
-                    it
-                )
-            }
+            academiumItems = (userInfoUi.academia)?.map { AcademiumItem(it) }
 
             headers.put(
                 AdapterViewType.COURSES,
