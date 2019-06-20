@@ -51,27 +51,27 @@ We will use this dependencies on app:
 
 The Flow is basically relying on DB information, but at the same time getting info from a service and updating accordingly when some important information of the user has an update.
 
-# About Architechture:
+# About Architecture:
 
 - Layers:
-a. DATA
-b. Use cases (interactors)
-b. View Models can use one or more interactors.
-d. Controllers use ViewModels.
+    - a. DATA
+    - b. Use cases (interactors)
+    - c. View Models can use one or more interactors.
+    - d. Controllers use ViewModels.
 
 - Object Dependencies
-We are using dagger to provide different instantiation of objects.
-We have two scopes:
-1. Activity. (Just showing how to manage custom scope)
-2. AppContext.
+    - Dagger to provide different instantiation of objects.
+    - Using two scopes:
+        - 1. Activity. (Just showing how to manage custom scope)
+        - 2. AppContext.
 
-- Background operatios are using Coroutines.
+- Background operations are using Coroutines.
 
 - Network
-We rely on coroutines adapter and Retrofit to make call to services.
+    We rely on coroutines adapter and Retrofit to make call to services.
 
-- We are using some Jetpack components.
-LiveData, Room.
+- Some Jetpack components are being used.
+    LiveData, Room.
 
 # Current simple behavior.
 
