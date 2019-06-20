@@ -1,4 +1,4 @@
-package com.kiquenet.introduceme.view_models
+package com.kiquenet.introduceme.feature.profile.view_model
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -7,13 +7,13 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.droidcba.kedditbysteps.commons.adapter.AdapterViewType
 import com.kiquenet.introduceme.R
-import com.kiquenet.introduceme.common.adapter.delegate.AcademiumItem
-import com.kiquenet.introduceme.common.adapter.delegate.CourseItem
 import com.kiquenet.introduceme.common.adapter.delegate.HeaderItem
-import com.kiquenet.introduceme.common.adapter.delegate.WorkExperienceItem
 import com.kiquenet.introduceme.di.scope.ApplicationContext
-import com.kiquenet.introduceme.domain.UserInformationUseCase.UserInfoInteractor
-import com.kiquenet.introduceme.domain.UserInformationUseCase.UserInfoUi
+import com.kiquenet.introduceme.feature.profile.UserInformationUseCase.UserInfoInteractor
+import com.kiquenet.introduceme.feature.profile.UserInformationUseCase.UserInfoUi
+import com.kiquenet.introduceme.feature.profile.adapter.AcademiumItem
+import com.kiquenet.introduceme.feature.profile.adapter.CourseItem
+import com.kiquenet.introduceme.feature.profile.adapter.WorkExperienceItem
 import com.kiquenet.introduceme.util.getDistinct
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel

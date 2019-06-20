@@ -3,7 +3,7 @@ package com.kiquenet.introduceme.data.db
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.kiquenet.introduceme.view_models.model.User
+import com.kiquenet.introduceme.common.view_models.model.User
 import java.util.*
 
 /**

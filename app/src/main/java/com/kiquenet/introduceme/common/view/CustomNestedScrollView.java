@@ -1,4 +1,5 @@
-package com.kiquenet.introduceme.view;
+package com.kiquenet.introduceme.common.view;
+
 
 import android.content.Context;
 import android.util.AttributeSet;

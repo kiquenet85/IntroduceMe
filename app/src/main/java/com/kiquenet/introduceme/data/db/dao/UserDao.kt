@@ -2,7 +2,7 @@ package com.kiquenet.introduceme.data.db.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.kiquenet.introduceme.view_models.model.*
+import com.kiquenet.introduceme.common.view_models.model.*
 
 /**
  * The Data Access Object for the Plant class.

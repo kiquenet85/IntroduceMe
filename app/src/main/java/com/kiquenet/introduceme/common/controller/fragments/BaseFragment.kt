@@ -1,4 +1,4 @@
-package com.kiquenet.introduceme.ui.fragments
+package com.kiquenet.introduceme.common.controller.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -8,7 +8,7 @@ import com.kiquenet.introduceme.IntroduceMeApp
 import com.kiquenet.introduceme.data.db.AppDatabase
 import com.kiquenet.introduceme.di.component.ActivityComponent
 import com.kiquenet.introduceme.di.component.ApplicationComponent
-import com.kiquenet.introduceme.ui.activity.BaseActivity
+import com.kiquenet.introduceme.common.controller.activity.BaseActivity
 import javax.inject.Inject
 
 /**

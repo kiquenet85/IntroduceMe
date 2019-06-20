@@ -4,8 +4,8 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import com.kiquenet.introduceme.domain.UserInformationUseCase.UserInfoUi
-import com.kiquenet.introduceme.domain.UserInformationUseCase.UserInfoUiDeserializer
+import com.kiquenet.introduceme.feature.profile.UserInformationUseCase.UserInfoUi
+import com.kiquenet.introduceme.feature.profile.UserInformationUseCase.UserInfoUiDeserializer
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test

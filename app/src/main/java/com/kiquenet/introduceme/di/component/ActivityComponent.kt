@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Context
 import com.kiquenet.introduceme.di.module.Activity.ActivityModule
 import com.kiquenet.introduceme.di.scope.PerActivity
-import com.kiquenet.introduceme.ui.activity.BaseActivity
+import com.kiquenet.introduceme.common.controller.activity.BaseActivity
 import dagger.Component
 import java.lang.ref.WeakReference
 

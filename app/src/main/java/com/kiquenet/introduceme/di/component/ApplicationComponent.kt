@@ -8,15 +8,15 @@ import com.kiquenet.introduceme.data.UserRepository
 import com.kiquenet.introduceme.data.db.AppDatabase
 import com.kiquenet.introduceme.di.module.*
 import com.kiquenet.introduceme.di.scope.ApplicationContext
-import com.kiquenet.introduceme.domain.UserInformationUseCase.UserInfoInteractor
+import com.kiquenet.introduceme.feature.profile.UserInformationUseCase.UserInfoInteractor
 import com.kiquenet.introduceme.network.NetworkManager
 import com.kiquenet.introduceme.network.WifiReceiver
 import com.kiquenet.introduceme.settings.Settings
-import com.kiquenet.introduceme.ui.activity.BaseActivity
-import com.kiquenet.introduceme.ui.fragments.BaseFragment
-import com.kiquenet.introduceme.ui.fragments.ProfileFragment
-import com.kiquenet.introduceme.view_models.UserInfoViewModel
-import com.kiquenet.introduceme.view_models.factory.ViewModelFactory
+import com.kiquenet.introduceme.common.controller.activity.BaseActivity
+import com.kiquenet.introduceme.common.controller.fragments.BaseFragment
+import com.kiquenet.introduceme.feature.profile.controller.ProfileFragment
+import com.kiquenet.introduceme.feature.profile.view_model.UserInfoViewModel
+import com.kiquenet.introduceme.common.view_models.factory.ViewModelFactory
 import dagger.Component
 import javax.inject.Singleton
 

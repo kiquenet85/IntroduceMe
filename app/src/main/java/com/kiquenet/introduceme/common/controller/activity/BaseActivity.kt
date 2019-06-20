@@ -1,4 +1,4 @@
-package com.kiquenet.introduceme.ui.activity
+package com.kiquenet.introduceme.common.controller.activity
 
 import android.app.Activity
 import android.content.Context

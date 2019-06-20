@@ -1,4 +1,4 @@
-package com.kiquenet.introduceme.view_models.factory
+package com.kiquenet.introduceme.common.view_models.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

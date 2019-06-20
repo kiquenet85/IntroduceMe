@@ -1,4 +1,4 @@
-package com.kiquenet.introduceme.common.adapter.delegate
+package com.kiquenet.introduceme.feature.profile.adapter
 
 import android.os.Build
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import com.droidcba.kedditbysteps.commons.adapter.ViewTypeDelegateAdapter
 import com.kiquenet.introduceme.R
 import com.kiquenet.introduceme.util.applyJustificationOnText
 import com.kiquenet.introduceme.util.inflate
-import com.kiquenet.introduceme.view_models.model.Academium
+import com.kiquenet.introduceme.common.view_models.model.Academium
 import kotlinx.android.synthetic.main.delegate_item_academium.view.*
 import java.util.*
 

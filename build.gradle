@@ -37,6 +37,7 @@ buildscript {
         ESPRESSO_VERSION = '3.1.1'
         ROBO_ELECTRIC_VERSION = '4.2'
         RUNNER_VERSION = '1.1.1'
+        TEST_CORE = '1.0.0'
     }
 
     repositories {

@@ -6,7 +6,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.google.gson.reflect.TypeToken
 import com.kiquenet.introduceme.IntroduceMeApp
-import com.kiquenet.introduceme.domain.UserInformationUseCase.UserInfoUi
+import com.kiquenet.introduceme.feature.profile.UserInformationUseCase.UserInfoUi
 import com.kiquenet.introduceme.util.USER_DATA_FILENAME
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope

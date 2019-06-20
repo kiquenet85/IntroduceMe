@@ -4,8 +4,8 @@ import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.kiquenet.introduceme.di.scope.ApplicationContext
-import com.kiquenet.introduceme.domain.UserInformationUseCase.UserInfoUi
-import com.kiquenet.introduceme.domain.UserInformationUseCase.UserInfoUiDeserializer
+import com.kiquenet.introduceme.feature.profile.UserInformationUseCase.UserInfoUi
+import com.kiquenet.introduceme.feature.profile.UserInformationUseCase.UserInfoUiDeserializer
 import com.kiquenet.introduceme.network.NetworkManager
 import com.kiquenet.introduceme.settings.Settings
 import dagger.Module

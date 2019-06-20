@@ -1,4 +1,4 @@
-package com.kiquenet.introduceme.ui.activity
+package com.kiquenet.introduceme.common.controller.activity
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -12,7 +12,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.kiquenet.introduceme.R
-import com.kiquenet.introduceme.ui.fragments.ProfileFragment
+import com.kiquenet.introduceme.feature.profile.controller.ProfileFragment
 import com.squareup.picasso.Picasso
 
 /**

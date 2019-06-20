@@ -3,7 +3,7 @@ package com.kiquenet.introduceme.di.module
 import android.content.Context
 import com.kiquenet.introduceme.data.UserRepository
 import com.kiquenet.introduceme.di.scope.ApplicationContext
-import com.kiquenet.introduceme.domain.UserInformationUseCase.UserInfoInteractor
+import com.kiquenet.introduceme.feature.profile.UserInformationUseCase.UserInfoInteractor
 import dagger.Module
 import dagger.Provides
 
