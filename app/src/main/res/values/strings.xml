@@ -22,5 +22,8 @@
     <string name="profile_adapter_header_work_exp">WORK EXPERIENCE</string>
     <string name="profile_adapter_header_academy">ACADEMY</string>
     <string name="profile_adapter_header_courses">COURSES</string>
+    <string name="empty_common_message">There is not data yet, let\'s start adding something about you!</string>
+    <string name="error_common_message">Sorry for the inconvenience! We are experiencing problems, please try again!
+    </string>
 
 </resources>

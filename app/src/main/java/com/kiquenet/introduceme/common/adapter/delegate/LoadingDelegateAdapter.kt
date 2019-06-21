@@ -2,6 +2,7 @@ package com.kiquenet.introduceme.common.adapter.delegate
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.droidcba.kedditbysteps.commons.adapter.AdapterViewType
 import com.droidcba.kedditbysteps.commons.adapter.ViewType
 import com.droidcba.kedditbysteps.commons.adapter.ViewTypeDelegateAdapter
 import com.kiquenet.introduceme.R
@@ -21,4 +22,8 @@ class LoadingDelegateAdapter : ViewTypeDelegateAdapter {
     class LoadingViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
         parent.inflate(R.layout.delegate_item_loading)
     )
+}
+
+class LoadingItem: ViewType {
+    override fun getViewType() = AdapterViewType.LOADING
 }

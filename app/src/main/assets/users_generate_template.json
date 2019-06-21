@@ -2,7 +2,7 @@
 [
   {
     'repeat(10)': {
-      _id: '{{integer()}}',
+      _id: '{{integer(1,1000)}}',
       isActive: '{{bool()}}',
       picture: 'http://placehold.it/32x32',
       age: '{{integer(20, 40)}}',
@@ -22,7 +22,8 @@
   longitude: '{{floating(-180.000001, 180)}}',
   academia: [
   {
-    'repeat(5)': {
+    'repeat(3, 5)': {
+      id: '{{integer(1,1000)}}',
       name: '{{random("Javeriana", "Standford", "MIT", "Coloumbia", "Arizona College")}}',
       degree: '{{random("College", "Graduated", "Doctor", "Undergratuated")}}',
     }
@@ -30,7 +31,8 @@
 ],
   workExperience: [
   {
-    'repeat(1, 4)': {
+    'repeat(4, 7)': {
+      id: '{{integer(1,1000)}}',
       name: '{{company().toUpperCase()}}',
       startDate: '{{moment(this.date(new Date(2000, 0, 1), new Date(2014, 0, 1))).format("LLLL")}}',
       endDate: '{{moment(this.date(new Date(2014, 0, 1), new Date())).format("LLLL")}}',
@@ -41,6 +43,7 @@
   courses: [
   {
     'repeat(1, 4)': {
+      id: '{{integer(1,1000)}}',
       name: '{{company().toUpperCase()}}',
       startDate: '{{moment(this.date(new Date(2005, 0, 1),new Date(2010, 0, 1))).format("LLLL")}}',
       endDate: '{{moment(this.date(new Date(2010, 0, 1), new Date())).format("LLLL")}}',

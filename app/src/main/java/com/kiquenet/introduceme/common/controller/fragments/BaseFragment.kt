@@ -5,10 +5,10 @@ import android.os.Bundle
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import com.kiquenet.introduceme.IntroduceMeApp
+import com.kiquenet.introduceme.common.controller.activity.BaseActivity
 import com.kiquenet.introduceme.data.db.AppDatabase
 import com.kiquenet.introduceme.di.component.ActivityComponent
 import com.kiquenet.introduceme.di.component.ApplicationComponent
-import com.kiquenet.introduceme.common.controller.activity.BaseActivity
 import javax.inject.Inject
 
 /**
@@ -29,10 +29,8 @@ open class BaseFragment : Fragment() {
     }
 
     override fun onActivityCreated(@Nullable savedInstanceState: Bundle?) {
-        activity?.let {
-            activityComponent = (it as BaseActivity).getActivityComponent()!!
-        }
-        appComponent = (activity?.application as IntroduceMeApp).appComponent
+        activityComponent = (requireActivity() as BaseActivity).getActivityComponent()!!
+        appComponent = (requireActivity().application as IntroduceMeApp).appComponent
         appComponent.inject(this)
         super.onActivityCreated(savedInstanceState)
     }

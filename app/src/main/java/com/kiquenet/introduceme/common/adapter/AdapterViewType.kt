@@ -5,11 +5,15 @@ package com.droidcba.kedditbysteps.commons.adapter
  */
 class AdapterViewType {
     companion object {
+        //Common
         const val HEADER = 0
-        const val LOADING = 1
-        const val ERROR = 2
-        const val WORK_EXPERIENCE = 3
-        const val ACADEMIUM = 4
-        const val COURSES = 5
+        const val EMPTY = 1
+        const val LOADING = 2
+        const val ERROR = 3
+
+        //Profile FEATURE
+        const val WORK_EXPERIENCE = 4
+        const val ACADEMIUM = 5
+        const val COURSES = 6
     }
 }

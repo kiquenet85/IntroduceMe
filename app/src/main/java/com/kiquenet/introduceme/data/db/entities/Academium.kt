@@ -3,7 +3,6 @@ package com.kiquenet.introduceme.common.view_models.model
 import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.Index
-import androidx.room.PrimaryKey
 
 /**
  * @author n.diazgranados
@@ -15,10 +14,11 @@ import androidx.room.PrimaryKey
         parentColumns = ["id"],
         childColumns = ["user_id"]
     )],
-    indices = [Index(value = ["user_id", "id"], unique = true)]
+    indices = [Index(value = ["user_id", "id"], unique = true)],
+    primaryKeys = ["user_id", "id"]
 )
 data class Academium(
-    @PrimaryKey(autoGenerate = true) @NonNull var id: Long,
+    @NonNull var id: Long,
     @NonNull var user_id: Long,
     var name: String,
     var degree: String? = null

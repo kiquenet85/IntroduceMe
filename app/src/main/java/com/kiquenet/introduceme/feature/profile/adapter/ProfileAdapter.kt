@@ -27,15 +27,6 @@ class ProfileAdapter
 
     private var items: ArrayList<ViewType>
     private var delegateAdapters = SparseArrayCompat<ViewTypeDelegateAdapter>()
-    private val loadingItem = object : ViewType {
-        override fun getViewType() = AdapterViewType.LOADING
-    }
-    private val errorItem = object : ViewType {
-        override fun getViewType() = AdapterViewType.ERROR
-    }
-    private val headerItem = object : ViewType {
-        override fun getViewType() = AdapterViewType.HEADER
-    }
 
     private val userInfoObserver = Observer<UserInfoViewModel.UserInfoEvent> { newValue ->
         newValue?.let {
@@ -52,8 +43,9 @@ class ProfileAdapter
     }
 
     init {
-        delegateAdapters.put(loadingItem.getViewType(), LoadingDelegateAdapter())
-        delegateAdapters.put(headerItem.getViewType(), HeaderDelegateAdapter())
+        delegateAdapters.put(AdapterViewType.LOADING, LoadingDelegateAdapter())
+        delegateAdapters.put(AdapterViewType.HEADER, HeaderDelegateAdapter())
+        delegateAdapters.put(AdapterViewType.EMPTY, EmptyDelegateAdapter())
         delegateAdapters.put(AdapterViewType.WORK_EXPERIENCE,
             WorkExperienceDelegateAdapter()
         )
@@ -88,15 +80,26 @@ class ProfileAdapter
             notifyItemRemoved(getLastPosition())
         }
 
-        // insert userInfo sections.
-        items.add(userInfoEvent.headers.get(AdapterViewType.WORK_EXPERIENCE) as ViewType)
-        items.addAll(userInfoEvent.workExperienceItems?.asIterable() ?: emptyList())
+        if (userInfoEvent.workExperienceItems?.isNotEmpty() == true) {
+            // insert userInfo sections.
+            items.add(userInfoEvent.headers.get(AdapterViewType.WORK_EXPERIENCE) as ViewType)
+            items.addAll(userInfoEvent.workExperienceItems?.asIterable())
+        }
 
-        items.add(userInfoEvent.headers.get(AdapterViewType.ACADEMIUM) as ViewType)
-        items.addAll(userInfoEvent.academiumItems?.asIterable() ?: emptyList())
+        if (userInfoEvent.workExperienceItems?.isNotEmpty() == true) {
+            items.add(userInfoEvent.headers.get(AdapterViewType.ACADEMIUM) as ViewType)
+            items.addAll(userInfoEvent.academiumItems?.asIterable() ?: emptyList())
+        }
 
-        items.add(userInfoEvent.headers.get(AdapterViewType.COURSES) as ViewType)
-        items.addAll(userInfoEvent.courseItems?.asIterable() ?: emptyList())
+        if (userInfoEvent.workExperienceItems?.isNotEmpty() == true) {
+            items.add(userInfoEvent.headers.get(AdapterViewType.COURSES) as ViewType)
+            items.addAll(userInfoEvent.courseItems?.asIterable() ?: emptyList())
+        }
+
+        if (items.isEmpty()){
+            showEmpty()
+        }
+
         notifyItemRangeChanged(0, items.size)
     }
 
@@ -117,7 +120,7 @@ class ProfileAdapter
             notifyItemRangeRemoved(0, getLastPosition())
         }
 
-        items.add(errorItem)
+        items.add(ErrorItem())
         notifyItemInserted(getLastPosition())
     }
 
@@ -127,13 +130,23 @@ class ProfileAdapter
             notifyItemRangeRemoved(0, getLastPosition())
         }
 
-        items.add(loadingItem)
+        items.add(ErrorItem())
+        notifyItemInserted(getLastPosition())
+    }
+
+    fun showEmpty() {
+        if (!items.isEmpty()) {
+            items.clear()
+            notifyItemRangeRemoved(0, getLastPosition())
+        }
+
+        items.add(EmptyItem())
         notifyItemInserted(getLastPosition())
     }
 
     private fun getLastPosition() = if (items.lastIndex == -1) 0 else items.lastIndex
 
     override fun isPinnedViewType(viewType: Int): Boolean {
-        return headerItem.getViewType().equals(viewType)
+        return AdapterViewType.HEADER.equals(viewType)
     }
 }

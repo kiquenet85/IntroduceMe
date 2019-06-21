@@ -9,9 +9,9 @@ import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
+import com.kiquenet.introduceme.common.view_models.model.*
 import com.kiquenet.introduceme.data.db.dao.UserDao
 import com.kiquenet.introduceme.util.DATABASE_NAME
-import com.kiquenet.introduceme.common.view_models.model.*
 
 /**
  * The Room database for this app
@@ -19,7 +19,7 @@ import com.kiquenet.introduceme.common.view_models.model.*
  */
 @Database(
     entities = [User::class, Course::class, Name::class, Academium::class, WorkExperience::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 @TypeConverters(Converters::class)
