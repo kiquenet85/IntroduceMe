@@ -9,7 +9,6 @@ package com.kiquenet.introduceme.common.sticky_header;
  */
 
 import android.graphics.*;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -75,10 +74,8 @@ public class PinnedHeaderItemDecoration extends RecyclerView.ItemDecoration {
 
             if (isHeaderView(parent, v)) {
                 mPinnedHeaderTop = v.getTop() - mPinnedHeaderView.getHeight();
-                Log.d("DEBUG", "isHEADER___ mPinnedHeaderTop" + mPinnedHeaderTop);
             } else {
                 mPinnedHeaderTop = 0;
-                Log.d("DEBUG", "mPinnedHeaderTop" + mPinnedHeaderTop);
             }
 
             if (mClipBounds.isEmpty()) {
