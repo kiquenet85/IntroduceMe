@@ -46,6 +46,7 @@ class ProfileAdapter
         delegateAdapters.put(AdapterViewType.LOADING, LoadingDelegateAdapter())
         delegateAdapters.put(AdapterViewType.HEADER, HeaderDelegateAdapter())
         delegateAdapters.put(AdapterViewType.EMPTY, EmptyDelegateAdapter())
+        delegateAdapters.put(AdapterViewType.ERROR, ErrorDelegateAdapter())
         delegateAdapters.put(AdapterViewType.WORK_EXPERIENCE,
             WorkExperienceDelegateAdapter()
         )
