@@ -100,7 +100,8 @@ class UserInfoInteractor @Inject constructor(
 
         if (userInfoUi != null && userInfoUi.user != null) {
 
-            userInfoUi?.user?.let {
+            userInfoUi.user?.let {
+                userRepository.insertUser(it)
                 userRepository.insertUserInformation(
                     it.id,
                     userInfoUi.workExperience ?: emptyList(),
