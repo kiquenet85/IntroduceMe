@@ -29,23 +29,23 @@ interface UserDao {
     fun getUserWorkExperience(id: Long): LiveData<List<WorkExperience>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAllNames(name: List<Name>)
+    suspend fun insertAllNames(name: List<Name>)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAll(users: List<User>)
+    suspend fun insertAll(users: List<User>)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertUser(users: User)
+    suspend fun insertUser(users: User)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAllUserCourses(users: List<Course>)
+    suspend fun insertAllUserCourses(users: List<Course>)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAllUserEducation(users: List<Academium>)
+    suspend fun insertAllUserEducation(users: List<Academium>)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAllUserWorkExperience(users: List<WorkExperience>)
+    suspend fun insertAllUserWorkExperience(users: List<WorkExperience>)
 
     @Update
-    fun updateUser(users: User)
+    suspend fun updateUser(users: User)
 }

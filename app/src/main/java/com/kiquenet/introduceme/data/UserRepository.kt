@@ -1,11 +1,14 @@
 package com.kiquenet.introduceme.data
 
 import android.util.Log
+import com.kiquenet.introduceme.common.view_models.model.Academium
+import com.kiquenet.introduceme.common.view_models.model.Course
+import com.kiquenet.introduceme.common.view_models.model.User
+import com.kiquenet.introduceme.common.view_models.model.WorkExperience
 import com.kiquenet.introduceme.data.db.AppDatabase
 import com.kiquenet.introduceme.data.remote.apis.IntroduceMeApi
 import com.kiquenet.introduceme.feature.profile.UserInformationUseCase.UserInfoUi
 import com.kiquenet.introduceme.network.NetworkManager
-import com.kiquenet.introduceme.common.view_models.model.User
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.coroutineScope
@@ -42,66 +45,49 @@ class UserRepository @Inject constructor(
 
             deferred.await()
         } catch (e: HttpException) {
-            Log.e(IntroduceMeApi::class.java.simpleName, "Exception ${e.message}")
+            Log.e(IntroduceMeApi::class.java.simpleName, "Exception getting remote user ${e.message}")
         } catch (e: Throwable) {
-            Log.e(IntroduceMeApi::class.java.simpleName, "Exception ${e.message}")
+            Log.e(IntroduceMeApi::class.java.simpleName, "Exception getting reemote user ${e.message}")
         }
         deferred
     }
 
     //Insert
-    fun insertUser(user: User) {
+    suspend fun insertUser(user: User) {
         user?.let {
             appDatabase.userDao().insertUser(user)
         }
     }
 
     //Update
-    fun updateUser(user: User) {
+    suspend fun updateUser(user: User) {
         user?.let {
             appDatabase.userDao().updateUser(user)
         }
     }
 
-    //Use cases
-    //Interactor DB operations.
-    fun insertListUserInfosUi(userList: List<UserInfoUi?>) {
-        appDatabase.runInTransaction({
-            userList.forEach {
-                if (it != null) insertUserInfoUi(it)
+    suspend fun insertUserInformation(
+        userId: Long,
+        workExperience: List<WorkExperience>,
+        courses: List<Course>,
+        academia: List<Academium>
+    ) {
+        courses.let {
+            if (!it.isEmpty()) {
+                it.forEach { it.user_id = userId }
+                appDatabase.userDao().insertAllUserCourses(it)
             }
-        })
-    }
-
-    //Insert list
-    fun insertUserInfoUi(userInfoUi: UserInfoUi) {
-
-        if (userInfoUi != null && userInfoUi.user != null) {
-
-            val safeUser = userInfoUi.user!!
-
-            with(userInfoUi) {
-                user?.id?.let {
-                    appDatabase.userDao().insertUser(safeUser)
-                    courses?.let {
-                        if (!it.isEmpty()) {
-                            it.forEach { it.user_id = safeUser.id }
-                            appDatabase.userDao().insertAllUserCourses(it)
-                        }
-                    }
-                    academia?.let {
-                        if (!it.isEmpty()) {
-                            it.forEach { it.user_id = safeUser.id }
-                            appDatabase.userDao().insertAllUserEducation(it)
-                        }
-                    }
-                    workExperience?.let {
-                        if (!it.isEmpty()) {
-                            it.forEach { it.user_id = safeUser.id }
-                            appDatabase.userDao().insertAllUserWorkExperience(it)
-                        }
-                    }
-                }
+        }
+        academia.let {
+            if (!it.isEmpty()) {
+                it.forEach { it.user_id = userId }
+                appDatabase.userDao().insertAllUserEducation(it)
+            }
+        }
+        workExperience.let {
+            if (!it.isEmpty()) {
+                it.forEach { it.user_id = userId }
+                appDatabase.userDao().insertAllUserWorkExperience(it)
             }
         }
     }

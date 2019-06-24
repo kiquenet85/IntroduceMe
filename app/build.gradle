@@ -30,7 +30,7 @@ dependencies {
 
     //App dependencies
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.KOTLIN_VERSION"
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.KOTLIN_VERSION"
     implementation "androidx.appcompat:appcompat:$rootProject.ANDROID_X_VERSION"
     implementation "androidx.core:core-ktx:$rootProject.ANDROID_X_VERSION"
     implementation "androidx.legacy:legacy-support-v4:$rootProject.ANDROID_X_LEGACY_SUPPORT_VERSION"
