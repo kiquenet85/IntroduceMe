@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.room.withTransaction
 import com.kiquenet.introduceme.data.UserRepository
 import com.kiquenet.introduceme.di.scope.ApplicationContext
 import com.kiquenet.introduceme.util.combineAndCompute
@@ -67,7 +68,7 @@ class UserInfoInteractor @Inject constructor(
             val userRemoteJob = userRepository.getRemoteUser(userId)
             val remoteUser = userRemoteJob.await()
 
-            userRepository.insertUserInfoUi(remoteUser)
+            insertUserInfoUi(remoteUser)
 
         } catch (e: Exception) {
             Log.e(TAG, "Problem when calling userRemote from userRepository.")
@@ -82,6 +83,31 @@ class UserInfoInteractor @Inject constructor(
         currentUser?.let {
             currentUser.picture = "www.otherpicture.com/${Random().nextInt()}"
             userRepository.updateUser(currentUser)
+        }
+    }
+
+    //region Interactor DB operations.
+    suspend fun insertListUserInfosUi(userList: List<UserInfoUi?>) {
+        userRepository.appDatabase.withTransaction {
+            userList.forEach {
+                if (it != null) this.insertUserInfoUi(it)
+            }
+        }
+    }
+
+    //Insert list
+    suspend fun insertUserInfoUi(userInfoUi: UserInfoUi) {
+
+        if (userInfoUi != null && userInfoUi.user != null) {
+
+            userInfoUi?.user?.let {
+                userRepository.insertUserInformation(
+                    it.id,
+                    userInfoUi.workExperience ?: emptyList(),
+                    userInfoUi.courses ?: emptyList(),
+                    userInfoUi.academia ?: emptyList()
+                )
+            }
         }
     }
 }

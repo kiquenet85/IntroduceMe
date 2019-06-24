@@ -36,10 +36,10 @@ class SeedDatabaseWorker(
                     Log.v(TAG, "Database reader mock file users list successfully")
 
                     //Save in DB
-                    val userRepository = (applicationContext as IntroduceMeApp).appComponent.getUserRepository()
+                    val userInfoInteractor = (applicationContext as IntroduceMeApp).appComponent.getUserInfoInteractor()
                     val database = (applicationContext as IntroduceMeApp).appComponent.getDB()
 
-                    userRepository.insertListUserInfosUi(listUsers)
+                    userInfoInteractor.insertListUserInfosUi(listUsers)
 
                     Log.v(TAG, "Database was loaded with User MOCKS")
                     Result.success()

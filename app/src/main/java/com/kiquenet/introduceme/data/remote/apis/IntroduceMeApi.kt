@@ -11,5 +11,5 @@ import retrofit2.http.Path
 interface IntroduceMeApi {
 
     @GET("introduceme/users/{userid}")
-    fun getUser(@Path("userid") userId: Long): Deferred<UserInfoUi>
+    suspend fun getUser(@Path("userid") userId: Long): Deferred<UserInfoUi>
 }
