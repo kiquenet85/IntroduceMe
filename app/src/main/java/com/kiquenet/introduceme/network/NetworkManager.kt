@@ -3,7 +3,6 @@ package com.kiquenet.introduceme.network
 import android.content.Context
 import android.net.ConnectivityManager
 import android.util.Log
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.kiquenet.introduceme.settings.Settings
 import okhttp3.*
 import retrofit2.Retrofit
@@ -79,7 +78,6 @@ class NetworkManager @Inject constructor(
             defaultRetrofit = Retrofit.Builder()
                 .baseUrl(settings.baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .client(okHttpClient)
                 .build()
         }

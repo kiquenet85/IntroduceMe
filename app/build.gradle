@@ -45,7 +45,6 @@ dependencies {
     implementation "com.google.code.gson:gson:$rootProject.GSON_VERSION"
     implementation "com.squareup.retrofit2:retrofit:$rootProject.RETROFIT_VERSION"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.RETROFIT_VERSION"
-    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$rootProject.COROUTINES_ADAPTER_VERSION"
 
     //Background
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.COROUTINES_VERSION"
